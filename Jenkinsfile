@@ -7,7 +7,7 @@ pipeline {
       }
     }
     stage('Build') {
-        failFast true
+        failFast false
         parallel {
             stage('Branch A') {
                 steps {
