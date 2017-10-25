@@ -7,25 +7,27 @@ pipeline {
       }
     }
     stage('Build') {
-      steps {
-        failTest true
-        parallel(
-          "Build": {
-            sh 'echo build'
-            input 'will build ?'
-            
-          },
-          "Scan": {
-            sh 'echo scan'
-            input 'will scan'
-            
-          },
-          "GodMod": {
-            input 'God coming?'
-            
-          }
-        )
-      }
+        failFast true
+        parallel {
+            stage('Branch A') {
+                steps {
+                    echo "On Branch A"
+                    input "Branch A OK ?"                    
+                }
+            }
+            stage('Branch B') {
+                steps {
+                    echo "On Branch B"
+                    input "Branch B OK ?"
+                }
+            }
+            stage('Branch C') {
+                steps {
+                    echo "On Branch C"
+                    input "Branch C OK ?"
+                }
+            }
+        }
     }
     stage('Test') {
       steps {
