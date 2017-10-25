@@ -8,6 +8,7 @@ pipeline {
     }
     stage('Build') {
       steps {
+        failTest true
         parallel(
           "Build": {
             sh 'echo build'
