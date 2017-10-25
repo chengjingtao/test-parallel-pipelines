@@ -3,19 +3,19 @@ pipeline {
   stages {
     stage('Clone') {
       steps {
-        sh 'sh "echo clone"'
+        sh '"echo clone"'
       }
     }
     stage('Build') {
       steps {
         parallel(
           "Build": {
-            sh 'sh "echo build"'
+            sh '"echo build"'
             input 'will build ?'
             
           },
           "Scan": {
-            sh 'sh "scan"'
+            sh '"scan"'
             input 'will scan'
             
           },
@@ -28,12 +28,12 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'sh "echo test"'
+        sh '"echo test"'
       }
     }
     stage('deploy') {
       steps {
-        sh 'sh "echo deploy"'
+        sh '"echo deploy"'
       }
     }
   }
